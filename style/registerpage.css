@@ -1,0 +1,30 @@
+.row {
+    display: block;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.leftcl {
+    display: flex;
+    flex:1;
+    margin: 0;
+    padding: 0;
+}
+
+.rightcl {
+    display: flex;
+    flex:3;
+    margin: 0;
+    padding: 0;
+}
+
+.rightcl input {
+    display: flex;
+    flex: 1;
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,39 @@
+:root {
+    --hC: rgb(114, 114, 114);
+    --bC: rgb(41, 38, 38);
+    --pagebgC: rgb(206, 206, 206);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bC);
+}
+
+header {
+    display: flex;
+    justify-content: right;
+    background-color: var(--hC);
+    margin: 0;
+    padding: 10px;
+}
+
+header * {
+    display: inline;
+    text-decoration: none;
+}
+
+
+.container {
+    padding: 0;
+    max-width: 800px;
+    min-height: 100vh;
+    margin: auto;
+    margin-top: 0;
+    background-color: var(--pagebgC);
+}
+article {
+    margin: 0;
+    margin-bottom: 30px;
+    padding-left: 10px;
+}
