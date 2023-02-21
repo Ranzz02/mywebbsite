@@ -26,6 +26,37 @@
                 <a href="../scripts/php/logout.php">Logout</a>
             </article>
 
+            <article>
+                <h2>Edit profile</h2>
+
+                <form action="../scripts/php/updateProfile.php" method="POST">
+                    <div>
+                        <span>Firstname</span>
+                        <input type="text" name="ufname">
+                    </div>
+                    <div>
+                        <span>Lastname</span>
+                        <input type="text" name="ulname">
+                    </div>
+                    <h4>Change password</h4>
+                    <div>
+                        <span>Your last password</span>
+                        <input type="password" name="ulastpassw">
+                    </div>
+                    <div>
+                        <span>New Password</span>
+                        <input type="password" name="unew1passw">
+                    </div>
+                    <div>
+                        <span>Confirm New Password</span>
+                        <input type="password" name="unew2passw">
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+
+                </form>
+            </article>
 
 
         </div>

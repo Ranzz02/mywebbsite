@@ -26,20 +26,20 @@ if (isset($_POST['uname']) && isset($_POST['passw'])) {
         }
         exit();
     } else {
-        $sql = "SELECT * FROM users WHERE username='$uname' AND password='$upassw'";
-
-        $result = $conn->query($sql);
-        if ($result->rowCount() === 1) {
+        $sql = "SELECT * FROM users WHERE username=?";
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->execute([$uname]);
+        $result = $stmt;
+        if ($stmt->rowCount() == 1) {
             $userData = $result->fetch();
 
-            if ($userData['username'] === $uname && $userData['password'] === $upassw) {
+            if (password_verify($upassw, $userData['password'])) {
                 echo "Logged in!";
-                
+
                 $_SESSION['username'] = $userData['username'];
                 $_SESSION['id'] = $userData['id'];
 
                 header("Location: ../../pages/");
-
             } else {
                 $errormsg = "Incorrect Password or Username";
                 setcookie('error', $errormsg, $time, "/");

@@ -13,12 +13,6 @@ $servername = "localhost";
 $dbname = "mywebsite";
 $username = "root";
 $password = "";
-// hemlis.php ser ut såhär:
-/* <?php 
-    $dbname = "din databas";
-    $username = "ditt användarnamn";
-    $password = "sup3rh3mlis";
-*/
 
 // try to create connection
 try {

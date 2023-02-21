@@ -70,11 +70,14 @@ if (isset($_POST['uname']) && isset($_POST['passw']) && isset($_POST['firstname'
             }
             exit();
         } else {
+            $hashedpassw = password_hash($upassw, PASSWORD_DEFAULT);
+            
             $sql = "INSERT INTO users (username,password,first_name,last_name,email) VALUES (?,?,?,?,?)";
-            $stmt = $conn->prepare($sql)->execute([$uname, $upassw, $ufname, $ulname, $uemail]);
-            $sql = "SELECT * FROM users WHERE username='$uname' AND password='$upassw'";
+            $stmt = $conn->prepare($sql)->execute([$uname, $hashedpassw, $ufname, $ulname, $uemail]);
+            $sql = "SELECT * FROM users WHERE username=?";
 
-            $result = $conn->query($sql);
+            $result = $conn->prepare($sql);
+            $result->execute([$username]);
 
             if ($result->rowCount() === 1) {
                 $userData = $result->fetch();
