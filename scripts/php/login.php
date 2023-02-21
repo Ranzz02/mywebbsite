@@ -38,6 +38,8 @@ if (isset($_POST['uname']) && isset($_POST['passw'])) {
 
                 $_SESSION['username'] = $userData['username'];
                 $_SESSION['id'] = $userData['id'];
+                $_SESSION['first_name'] = $userData['first_name'];
+                $_SESSION['last_name'] = $userData['last_name'];
 
                 header("Location: ../../pages/");
             } else {

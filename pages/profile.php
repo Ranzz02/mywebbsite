@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/passwValidation.css">
+    <link rel="stylesheet" href="../style/profile.css">
 </head>
 
 <?php if (isset($_SESSION['username']) && $_SESSION['id']) {
@@ -23,38 +25,68 @@
             <br>
             <article>
                 <h1>Hello, <?php echo $_SESSION['username'] ?></h1>
-                <a href="../scripts/php/logout.php">Logout</a>
             </article>
 
             <article>
                 <h2>Edit profile</h2>
 
-                <form action="../scripts/php/updateProfile.php" method="POST">
-                    <div>
-                        <span>Firstname</span>
-                        <input type="text" name="ufname">
+                <form action="../scripts/php/updateflname.php" method="POST">
+                    <div class="row">
+                        <h4>First & Last name</h4>
                     </div>
-                    <div>
-                        <span>Lastname</span>
-                        <input type="text" name="ulname">
+                    <div class="row">
+                        <label class="leftcl" for="">Firstname</label>
+                        <input class="rightcl" type="text" name="ufname" placeholder="Current: <?php echo $_SESSION["first_name"]; ?>">
                     </div>
-                    <h4>Change password</h4>
-                    <div>
-                        <span>Your last password</span>
-                        <input type="password" name="ulastpassw">
+                    <div class="row">
+                        <lable class="leftcl" for="">Lastname</lable>
+                        <input class="rightcl" type="text" name="ulname" placeholder="Current: <?php echo $_SESSION['last_name']; ?>">
                     </div>
-                    <div>
-                        <span>New Password</span>
-                        <input type="password" name="unew1passw">
-                    </div>
-                    <div>
-                        <span>Confirm New Password</span>
-                        <input type="password" name="unew2passw">
-                    </div>
-                    <div>
-                        <button type="submit">Submit</button>
+                    <div class="row">
+                        <span class="leftcl"></span>
+                        <div class="rightcl">
+                            <button type="submit">Submit</button>
+                            <button type="reset">Reset</button>
+                        </div>
                     </div>
 
+                </form>
+                <form action="../scripts/php/updatepassw.php" method="POST">
+                    <div class="row">
+                        <h4>Change password</h4>
+                    </div>
+                    <div class="row">
+                        <lable class="leftcl" for="">Your last password</lable>
+                        <input class="rightcl" type="password" name="ulastpassw" placeholder="Your current password" required>
+                    </div class="row">
+                    <div class="row">
+                        <lable class="leftcl" for="">New Password</lable>
+                        <input class="rightcl" type="password" name="newpassw" id="unewpassw" placeholder="New Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                    </div>
+                    <div class="row">
+                        <lable class="leftcl" for="">Confirm New Password</lable>
+                        <input class="rightcl" type="password" name="confirm_newpassw" id="uconfirm_newpassw" placeholder="Confirm new Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                    </div>
+                    <div id="message" class="row">
+                        <h3>Password must contain the following:</h3>
+                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                        <p id="number" class="invalid">A <b>number</b></p>
+                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                    </div>
+                    <div class="row">
+                        <span class="passcheck hidePasscheck"></span>
+                    </div>
+                    <div class="row">
+                        <span class="leftcl"></span>
+                        <div class="rightcl">
+                            <button type="submit">Submit</button>
+                            <button type="reset">Reset</button>
+                        </div>
+                    </div>
+
+                    <script src="../scripts/js/passwordcheck.js"></script>
+                    <script src="../scripts/js/passwordvalidation.js"></script>
                 </form>
             </article>
 

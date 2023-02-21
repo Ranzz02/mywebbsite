@@ -1,11 +1,7 @@
 .row {
-    display: block;
-}
-
-.row {
     display: flex;
     justify-content: center;
-    width: 100%;
+    flex:1;
 }
 
 .leftcl {

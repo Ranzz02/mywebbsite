@@ -1,0 +1,57 @@
+form {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 25px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex:1;
+}
+
+.row h4 {
+    display: flex;
+    flex:1;
+    justify-content: left;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 5px;
+}
+
+.leftcl {
+    display: flex;
+    flex:1;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    align-items: center;
+}
+
+.rightcl {
+    display: flex;
+    flex:2;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    align-items: center;
+}
+
+.rightcl * {
+    display: flex;
+    flex: 8;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    align-items: center;
+}
+
+.showPasscheck {
+    display: flex;
+}
+
+.hidePasscheck {
+    display: none;
+}
