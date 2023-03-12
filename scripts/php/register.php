@@ -89,6 +89,7 @@ if (isset($_POST['uname']) && isset($_POST['passw']) && isset($_POST['firstname'
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['first_name'] = $row['first_name'];
                 $_SESSION['last_name'] = $row['last_name'];
+                $_SESSION['age'] = $row['age'];
 
                 header("Location: ../../pages/");
             } else {

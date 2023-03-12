@@ -30,7 +30,7 @@ if (isset($_POST['uname']) && isset($_POST['passw'])) {
         $stmt = $conn->prepare($sql);
         $result = $stmt->execute([$uname]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($result) {
+        if ($stmt->rowCount() == 1) {
             $userData = $result;
 
             if (password_verify($upassw, $userData['password'])) {
@@ -43,7 +43,7 @@ if (isset($_POST['uname']) && isset($_POST['passw'])) {
 
                 header("Location: ../../pages/");
             } else {
-                $errormsg = "Incorrect Password or Username";
+                $errormsg = "Incorrect Password".$userData['password'];
                 setcookie('error', $errormsg, $time, "/");
                 if (isset($_COOKIE['error'])) {
                     header("Location: ../../pages/loginPage.php");
@@ -53,7 +53,7 @@ if (isset($_POST['uname']) && isset($_POST['passw'])) {
                 exit();
             }
         } else {
-            $errormsg = "Incorrect Password or Username";
+            $errormsg = "Incorrect Username";
             setcookie('error', $errormsg, $time, "/");
             if (isset($_COOKIE['error'])) {
                 header("Location: ../../pages/loginPage.php");

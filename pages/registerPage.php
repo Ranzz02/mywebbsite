@@ -49,7 +49,6 @@
                     <label class="leftcl" for="">Password</label>
                     <div class="rightcl">
                         <input id="upassw" type="password" name="passw" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-                        <input id="urpassw" type="password" placeholder="Rewrite Password" required>
                     </div>
                 </div>
                 <div id="message">

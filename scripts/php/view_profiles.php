@@ -1,44 +1,15 @@
+<form action="./" method="post">
+    <label>Sort by date!</label>
+    <input type="date" name="sdate">
+    <input type="submit" value="Sort!">
+</form>
 <?php
-include "model_profile.php";
-
-if ($_SESSION["id"] != "" || $_SESSION["id"] = null) {
-    $sql = "SELECT username, first_name, last_name, email, bio, age, gender FROM users";
-    $stmt = $conn->query($sql);
-    $result = $stmt;
-
-    if ($result->rowCount() > 0) {
-        $json = json_encode($result->fetchAll(PDO::FETCH_ASSOC));
-        $_SESSION["profiles"] = $json;
-        /*
-        foreach ($result as $row) {
-            if ($row["id"] == $_SESSION["id"]) {
-            } else {
-                $profile = new profile;
-                $profile->id = $row["id"];
-                $profile->username = $row["username"];
-                $profile->useremail = $row["email"];
-                $profile->userbio = $row["bio"];
-                $profile->print_profile();
-            }
-        }*/
-    } else {
-        echo "Failed to get profiles";
-    }
+if (!empty($_REQUEST['sdate'] && isset($_REQUEST['sdate']))) {
+    $newDate = test_input($_POST['sdate']);
+    $_POST = array();
 } else {
-    $sql = "SELECT * FROM users";
-    $stmt = $conn->query($sql);
-    $result = $stmt;
-
-    if ($result) {
-        foreach ($result as $row) {
-            $profile = new profile;
-            $profile->id = $row["id"];
-            $profile->username = $row["username"];
-            $profile->useremail = $row["email"];
-            $profile->userbio = $row["bio"];
-            $profile->print_profile();
-        }
-    } else {
-        echo "Failed to get profiles";
-    }
+    $newDate = mktime(12,0,0,1,1,1000);
+    print_r(date("Y-m-d",$newDate));
 }
+
+include "../scripts/php/model_profiles.php";

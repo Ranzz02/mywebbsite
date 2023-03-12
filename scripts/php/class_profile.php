@@ -23,6 +23,10 @@ class profile
                     <label class="profile-info-l" for="">Bio: </label>
                     <p class="profile-info-r bio"><?= $this->userbio ?></p>
                 </div>
+                <div class="profile-info">
+                    <label class="profile-info-l"></label>
+                    <p class="profile-info-r age"><?= $this->userage ?></p>
+                </div>
             </div>
         </article>
 <?php

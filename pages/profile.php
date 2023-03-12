@@ -36,11 +36,11 @@
                     </div>
                     <div class="row">
                         <label class="leftcl" for="">Firstname</label>
-                        <input class="rightcl" type="text" name="ufname" placeholder="Current: <?php echo $_SESSION["first_name"]; ?>">
+                        <input class="rightcl" type="text" name="ufname" placeholder="Current: <?= $_SESSION["first_name"]; ?>">
                     </div>
                     <div class="row">
                         <lable class="leftcl" for="">Lastname</lable>
-                        <input class="rightcl" type="text" name="ulname" placeholder="Current: <?php echo $_SESSION['last_name']; ?>">
+                        <input class="rightcl" type="text" name="ulname" placeholder="Current: <?= $_SESSION['last_name']; ?>">
                     </div>
                     <div class="row">
                         <span class="leftcl"></span>
@@ -85,18 +85,32 @@
                         </div>
                     </div>
 
-                    
-
                     <script src="../scripts/js/passwordcheck.js"></script>
                     <script src="../scripts/js/passwordvalidation.js"></script>
                 </form>
 
-                <form action="./deleteAccount.php" method="post">
-                        <div class="row">
-                            <label class="leftcl" for=""></label>
-                            <button class="rightcl" type="submit">Delete Account</button>
+                <form action="../scripts/php/updateage.php" method="POST">
+                    <div class="row">
+                        <h4>Change Age</h4>
+                    </div>
+                    <div class="row">
+                        <lable class="leftcl" for="">Your current age is: <?= $_SESSION['age'] ?></lable>
+                        <input class="rightcl" type="date" name="ndate" placeholder="Your New Age" required>
+                    </div class="row">
+                    <div class="row">
+                        <span class="leftcl"></span>
+                        <div class="rightcl">
+                            <button type="submit">Submit</button>
+                            <button type="reset">Reset</button>
                         </div>
-                    </form>
+                    </div>
+                </form>
+                <form action="./deleteAccount.php" method="post">
+                    <div class="row">
+                        <label class="leftcl" for=""></label>
+                        <button class="rightcl" type="submit">Delete Account</button>
+                    </div>
+                </form>
             </article>
 
 
