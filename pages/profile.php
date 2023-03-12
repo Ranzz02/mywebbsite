@@ -10,7 +10,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/passwValidation.css">
-    <link rel="stylesheet" href="../style/profile.css">
+    <link rel="stylesheet" href="../style/form.css">
 </head>
 
 <?php if (isset($_SESSION['username']) && $_SESSION['id']) {
@@ -85,9 +85,18 @@
                         </div>
                     </div>
 
+                    
+
                     <script src="../scripts/js/passwordcheck.js"></script>
                     <script src="../scripts/js/passwordvalidation.js"></script>
                 </form>
+
+                <form action="./deleteAccount.php" method="post">
+                        <div class="row">
+                            <label class="leftcl" for=""></label>
+                            <button class="rightcl" type="submit">Delete Account</button>
+                        </div>
+                    </form>
             </article>
 
 

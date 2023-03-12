@@ -57,9 +57,12 @@ if (isset($_POST['uname']) && isset($_POST['passw']) && isset($_POST['firstname'
         }
         exit();
     } else {
-        $sql = "SELECT * FROM users WHERE username='$uname' OR email='$uemail'";
+        $sql = "SELECT * FROM users WHERE username=? OR email=?";
 
-        $result = $conn->query($sql);
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$uname,$uemail]);
+        $stmt->fetch();
+        $result = $stmt;
         if ($result->rowCount() > 0) {
             $errormsg = "Email or Username already in use!";
             setcookie('error', $errormsg, $time, "/");
@@ -73,17 +76,19 @@ if (isset($_POST['uname']) && isset($_POST['passw']) && isset($_POST['firstname'
             $hashedpassw = password_hash($upassw, PASSWORD_DEFAULT);
             
             $sql = "INSERT INTO users (username,password,first_name,last_name,email) VALUES (?,?,?,?,?)";
-            $stmt = $conn->prepare($sql)->execute([$uname, $hashedpassw, $ufname, $ulname, $uemail]);
-            $sql = "SELECT * FROM users WHERE username=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$uname, $hashedpassw, $ufname, $ulname, $uemail]);
+            $result = $stmt;
+            
+            if ($result->rowCount() == 1) {
+                $sql = "SELECT * FROM users WHERE username='$uname'";
+                $stmt = $conn->query($sql);
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $result = $conn->prepare($sql);
-            $result->execute([$username]);
-
-            if ($result->rowCount() === 1) {
-                $userData = $result->fetch();
-
-                $_SESSION['username'] = $userData['username'];
-                $_SESSION['id'] = $userData['id'];
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['first_name'] = $row['first_name'];
+                $_SESSION['last_name'] = $row['last_name'];
 
                 header("Location: ../../pages/");
             } else {

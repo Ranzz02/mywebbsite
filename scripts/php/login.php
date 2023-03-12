@@ -29,9 +29,9 @@ if (isset($_POST['uname']) && isset($_POST['passw'])) {
         $sql = "SELECT * FROM users WHERE username=?";
         $stmt = $conn->prepare($sql);
         $result = $stmt->execute([$uname]);
-        $result = $stmt;
-        if ($stmt->rowCount() == 1) {
-            $userData = $result->fetch();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result) {
+            $userData = $result;
 
             if (password_verify($upassw, $userData['password'])) {
                 echo "Logged in!";

@@ -4,10 +4,10 @@ function validate_password() {
     var confirm_pass = document.querySelector("#uconfirm_newpassw").value;
     if (pass != confirm_pass) {
         document.querySelector(".passcheck").style.color = 'red';
-        document.querySelector(".passcheck").innerHTML = '☒ Use same password';
+        document.querySelector(".passcheck").innerHTML = '☒ Use the same password';
     } else {
         document.querySelector(".passcheck").style.color = 'green';
-        document.querySelector(".passcheck").innerHTML = '🗹 Password Matched';
+        document.querySelector(".passcheck").innerHTML = '🗹 Passwords Match';
     }
     if ((pass == "" || pass == null) && (confirm_pass == "" || confirm_pass == null)) {
         document.querySelector(".passcheck").classList.add("hidePasscheck")

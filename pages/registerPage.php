@@ -35,11 +35,11 @@
                 </div>
                 <div class="row">
                     <label class="leftcl" for="">First Name</label>
-                    <input class="rightcl" type="text" name="firstname" placeholder="first name">
+                    <input class="rightcl" type="text" name="firstname" placeholder="first name" required>
                 </div>
                 <div class="row">
                     <label class="leftcl" for="">Last Name</label>
-                    <input class="rightcl" type="text" name="lastname" placeholder="last name">
+                    <input class="rightcl" type="text" name="lastname" placeholder="last name" requiredS>
                 </div>
                 <div class="row">
                     <label class="leftcl" for="">Email</label>

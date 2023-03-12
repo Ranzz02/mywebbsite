@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mywebbsite</title>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/profile.css">
 </head>
 
 <body>
@@ -17,10 +18,9 @@
         <!--Include header-->
         <br>
         <br>
-        <article>
-
-        </article>
-
+        <?php include "../scripts/php/view_profiles.php" ?>
+        <script>const profiles = <?= $_SESSION["profiles"]; ?></script>
+        <script src="../scripts/js/profile.js"></script>
     </div>
 
 </body>
